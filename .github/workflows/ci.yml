@@ -61,9 +61,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: copy example env file to .env
-        run: cp .env.example .env
-        
       - name: setup go environment
         uses: actions/setup-go@v6
         with:

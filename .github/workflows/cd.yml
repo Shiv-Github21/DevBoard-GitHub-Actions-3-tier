@@ -10,6 +10,9 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v4
 
+            - name: copy example env file to .env
+              run: cp .env.example .env
+
             - name: setup docker
               uses: docker/setup-buildx-action@v2
 
