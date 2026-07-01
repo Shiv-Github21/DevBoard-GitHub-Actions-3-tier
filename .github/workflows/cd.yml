@@ -22,12 +22,16 @@ jobs:
                 username: ${{ vars.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
 
-            - name: pull and run docker image for fe
-              run: |
-                  docker pull ${{ vars.DOCKER_USERNAME }}/frontend:latest
-                  docker run -d -p 80:80 ${{ vars.DOCKER_USERNAME }}/frontend:latest
+            # - name: pull and run docker image for fe
+            #   run: |
+            #       docker pull ${{ vars.DOCKER_USERNAME }}/frontend:latest
+            #       docker run -d -p 80:80 ${{ vars.DOCKER_USERNAME }}/frontend:latest
                   
-            - name: pull and run docker image for be
+            # - name: pull and run docker image for be
+            #   run: |
+            #       docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
+            #       docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest    
+            - name: Deploy with Docker Compose
               run: |
-                  docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
-                  docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest         
+                 docker compose pull
+                 docker compose up -d --remove-orphans     
