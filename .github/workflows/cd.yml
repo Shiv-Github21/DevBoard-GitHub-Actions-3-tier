@@ -13,8 +13,8 @@ jobs:
             - name: copy example env file to .env
               run: cp .env.example .env
 
-            - name: setup docker
-              uses: docker/setup-buildx-action@v2
+            # - name: setup docker
+            #   uses: docker/setup-buildx-action@v2
 
             - name: Login to dockerhub
               uses: docker/Login-action@v2
