@@ -76,3 +76,17 @@ jobs:
         run: go vet
       - name: Run Test Cases
         run: go test ./...
+      - name: setup docker
+        uses: docker/setup-buildx-action@v2
+      - name: Login to dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push Docker Image for be
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          push: true
+          tags: ${{ vars.DOCKER_USERNAME }}/backend:latest
+
