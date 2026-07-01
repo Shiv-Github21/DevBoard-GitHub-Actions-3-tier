@@ -1,3 +1,6 @@
+give me in this form only : 
+
+```dockercompose
 # DevBoard (advanced) — UI + Go backend + Postgres. That's the whole stack.
 #
 #   browser ──▶ frontend (vite preview :4173) ──/api──▶ backend (Go) ──▶ postgres
@@ -52,3 +55,5 @@ services:
 
 volumes:
   pgdata:
+
+```
