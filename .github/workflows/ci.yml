@@ -69,7 +69,7 @@ jobs:
             cache-dependency-path: 'go.sum'
       - name: Install dependencies
         run: go mod download
-      # Step 4: Verify module integrity
+      # Step 4: Verify module integrityyyy
       - name: Verify dependencies
         run: go mod verify
       - name: Go-Linter
