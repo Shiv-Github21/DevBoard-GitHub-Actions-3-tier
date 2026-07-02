@@ -27,7 +27,7 @@ jobs:
             #       docker pull ${{ vars.DOCKER_USERNAME }}/frontend:latest
             #       docker run -d -p 80:80 ${{ vars.DOCKER_USERNAME }}/frontend:latest
                   
-            # - name: pull and run docker image for be j
+            # - name: pull and run docker image for be 
             #   run: |
             #       docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
             #       docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest    
