@@ -22,17 +22,14 @@ jobs:
                 username: ${{ vars.DOCKER_USERNAME }}
                 password: ${{ secrets.DOCKER_PASSWORD }}
 
-            # - name: pull and run docker image for fe
-            #   run: |
-            #       docker pull ${{ vars.DOCKER_USERNAME }}/frontend:latest
-            #       docker run -d -p 80:80 ${{ vars.DOCKER_USERNAME }}/frontend:latest
-                  
-            # - name: pull and run docker image for be j
-            #   run: |
-            #       docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
-            #       docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest     hello ji
-            - name: Deploy with Docker Compose
+            - name: pull and run docker image for fe
               run: |
-                 docker compose pull
-                 docker compose up -d     
+                  docker pull ${{ vars.DOCKER_USERNAME }}/frontend:latest
+                  docker run -d -p 80:80 ${{ vars.DOCKER_USERNAME }}/frontend:latest
+                  
+            - name: pull and run docker image for be j
+              run: |
+                  docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
+                  docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest     
+ 
                  
