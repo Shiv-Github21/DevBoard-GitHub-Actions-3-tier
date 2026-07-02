@@ -30,7 +30,7 @@ jobs:
             # - name: pull and run docker image for be j
             #   run: |
             #       docker pull ${{ vars.DOCKER_USERNAME }}/backend:latest
-            #       docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest    
+            #       docker run -d -p 8080:8080 ${{ vars.DOCKER_USERNAME }}/backend:latest     hello ji
             - name: Deploy with Docker Compose
               run: |
                  docker compose pull
