@@ -50,10 +50,14 @@ jobs:
           go-version-file: 'go.mod' 
           cache-dependency-path: 'go.sum'
             
-      - name: Install dependencies
-        run: |
-          go mod download
-          go mod verify
+      - name: Download Go dependencies
+        working-directory: backend
+        run: go mod download
+
+      - name: Verify Go dependencies
+        working-directory: backend
+        run: go mod verify
+          
       - name: Go-Linter
         run: go vet
         working-directory: backend
