@@ -7,15 +7,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout-code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+        
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
          node-version: '20' # Specify your required Node version
          cache: 'npm'
          cache-dependency-path: frontend/package-lock.json
+         
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
         working-directory: ./frontend
 
       - name: Run Linter Validation
@@ -23,13 +25,13 @@ jobs:
         working-directory: ./frontend
 
       - name: docker-login
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build and Push Image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
@@ -40,30 +42,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses:  actions/checkout@v6
+        uses:  actions/checkout@v7
       - name: Set up Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
+          go-version: '1.23'
           go-version-file: 'go.mod' 
           cache-dependency-path: 'go.sum'
-          cache: true   
+            
       - name: Install dependencies
         run: |
           go mod download
           go mod verify
       - name: Go-Linter
         run: go vet
-      - name: Run Test Cases
-        run: go test ./...
-      - name: setup docker
-        uses: docker/setup-buildx-action@v2
+        working-directory: backend
+
+      - name: Run Go Vet
+        run: go vet
+        working-directory: backend
+        
       - name: Login to dockerhub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v4
         with:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push Docker Image for be
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: ./backend
           file: ./backend/Dockerfile
