@@ -71,13 +71,12 @@ jobs:
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name: Build and push Docker Image for be
+      - name: Docker Build and Push
         uses: docker/build-push-action@v7
         with:
           context: ./backend
-          file: ./backend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/dev-backend-naya:latest
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard-backend:latest
           
   
         
