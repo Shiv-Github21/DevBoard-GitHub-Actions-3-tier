@@ -77,7 +77,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/backend-naya:latest
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/backend-naya:latest
           
   
         
